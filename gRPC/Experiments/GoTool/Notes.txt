@@ -1,0 +1,6 @@
+How to install Go Tool:
+https://go.dev/doc/install
+
+How to test if Go Tool installed:
+Open CMD, and type "go version"
+It is supposed to display "go1.19.2 windows/amd64"
