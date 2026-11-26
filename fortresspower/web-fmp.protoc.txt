@@ -1,0 +1,5 @@
+https://protobuf.dev/installation/
+> winget install protobuf
+> protoc --version # Ensure compiler version is 3+
+
+D:\git\cmsandbox\components\web-fmp\src\api> npm run gen:proto
