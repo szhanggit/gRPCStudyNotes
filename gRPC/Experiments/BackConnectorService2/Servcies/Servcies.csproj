@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Services\Common.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TXC.Proto.Product">
+      <HintPath>..\TXC.Proto.Product.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
