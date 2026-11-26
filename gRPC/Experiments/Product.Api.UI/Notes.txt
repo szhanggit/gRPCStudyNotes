@@ -1,0 +1,4 @@
+https://edenred.atlassian.net/wiki/spaces/TXCLOUD/pages/12969476123/04.+gRPC+Testing+using+grpcui
+grpcui -plaintext -proto common.proto -proto product.proto -import-path "D:\Study\gRPCStudyNotes\gRPC\Experiments\Product.Api.UI\Product\Proto\Protos" localhost:9018		
+grpcui -plaintext localhost:9018
+ctrl+c
