@@ -1,0 +1,18 @@
+https://github.com/fullstorydev/grpcui (Recommended by Edenred)
+https://www.fullstory.com/blog/grpcui-dont-grpc-without-it/
+C# Grpc Test With GrpcUi
+
+
+
+
+go install github.com/fullstorydev/grpcui/cmd/grpcui@latest		
+grpcui -help		
+grpcui localhost:7002	(Now listening on: https://localhost:7002)		
+		
+127.0.0.1:52274		
+ctrl+C
+
+
+
+https://edenred.atlassian.net/wiki/spaces/TXCLOUD/pages/12969476123/04.+gRPC+Testing+using+grpcui
+https://blog.csdn.net/vivisol/article/details/122608377    (Recommended by Karl)
