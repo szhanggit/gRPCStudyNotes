@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServiceExceptionHandlingDemo2";
+
+import "common.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+// The greeting service definition.
+service Greeter2 {
+  // Sends a greeting
+  rpc SayHello2 (HelloRequest2) returns (ProtoBaseResponse);
+}
+
+// The request message containing the user's name.
+message HelloRequest2 {
+  string name = 1;
+  bool throwException = 2;
+}
+
+// The response message containing the greetings.
+message HelloReply2 {
+  string message = 1;
+}
