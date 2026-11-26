@@ -1,0 +1,42 @@
+console.clear()
+
+utils = {
+  invokeLocalUtility: function(_pm) {
+    const encryptRequest = {
+        url: "http://localhost:5000/api/Redemption",
+        method: "POST",
+        body: JSON.stringify(_pm.request.body.raw),
+        header: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    };
+
+    function setHeader(req, isAdd = false) {
+        ["TenantBasicInfoId", "ProgramIdentityCode", "MerchantIdentityCode", "Channel", "Encoding", "ShopIdentityCode", "TerminalIdentityCode"]
+        .forEach(x => {
+            if(isAdd)
+                req.headers.add({key: x, value: _pm.collectionVariables.get(x)});
+            else    
+                req.header[x] = _pm.collectionVariables.get(x);
+        })
+    }
+
+    setHeader(encryptRequest);
+
+    encryptRequest.header["action"] = _pm.request.url.getPath().split('/').pop();
+
+    _pm.sendRequest(encryptRequest, function (err, response) {
+        if (err)
+            console.log(err)
+        else {
+            var result = JSON.parse(response.json());
+            _pm.request.body.raw = result.payload;
+            _pm.request.headers.add({key: "Checksum", value: result.checksum});
+
+            setHeader(_pm.request, true);
+            console.log(result)
+        }
+    })
+  }
+};

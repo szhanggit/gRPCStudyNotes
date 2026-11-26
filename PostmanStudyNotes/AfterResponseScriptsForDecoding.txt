@@ -1,0 +1,6 @@
+pm.response.messages.each(msg => {
+    var data = msg.data;
+    var value = data.Data.value;
+    const decodedStr = Buffer.from(value, 'base64').toString('utf8');
+    console.log(decodedStr);
+});
