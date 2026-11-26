@@ -1,0 +1,169 @@
+Create a gRPC project on VS2019
+Create a new project -> search for 'grpc'
+
+message HelloRequest {
+  string name = 1;  -- 1 means the order of the parameter.
+}
+
+Create a console application as GrpcClient and add NuGet packages:
+Google.protobuf	(v3.10.0-rc1)	(runtime serialization technology)
+grpc.net.client	(0.2.23-pre2)	(gRPC libraries)
+grpc.tools		(2.24.0-pre1)	(generate code according to protobuf)
+
+In the client side, there shall be a proto file too.
+The setting of the proto file:
+gRPC Stub Classes shall be 'Client only'. In addition, double click GrpcClient and check the setting.
+  <ItemGroup>
+    <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
+  </ItemGroup>
+  
+Build Action shall be 'Protobuf compiler'
+
+In order to add a proto, 1. add a .proto file. 2. add a services. 3. add it in the mapping of Startup.cs  
+
+What is package?
+public class GreeterService : Greeter.GreeterBase
+
+The settings on .proto file:
+Build Action: Protobuf compiler
+Class Access: Public
+Compile Protobuf:	Yes
+gRPC Stub Classes:	Server only
+
+Protobuf(aka Protocal Buffers)
+IDL (interface definition language)
+	Describe once and generate interfaces for any language.
+	
+Files need to pay attention:
+Project file, protobuf file, Services file, Startup file.
+
+How clients find servers:
+Right click dependencies, add connected service, service references.
+Browse to the protobuf file of the server.
+
+The way to run gRPC.
+Go to project root note. Go to its physicial path(在文件资源管理器中打开文件)。
+Right click any empty area and choose "Open powershell window here". 
+Type: dotnet run
+
+Simple Demo:
+1. Create gRPC service using template.
+2. Create gRPC client.
+3. Call service.
+
+Sreaming: (every reqeust is like a post)
+Unary -- single request gets single response.
+Server Streaming -- single request from client gets many response from server.
+Client Streaming -- single request from server gets many response from client.
+Bi Directional Streaming -- it is like a chat room.
+
+gRPC is like HTTP/2 request.
+In HTTP/1.1
+POST / SayHello
+host:localhost
+content-type: application/json
+
+{"name":"world"}
+
+Status: Success
+
+In HTTP/2
+HEADERS frame:
+	POST / SayHello
+	host:localhost
+	content-type: application/json
+DATA frame:
+	{"name":"world"}
+HEADERS frame:
+	Status: Success	
+
+
+Demo
+https://www.youtube.com/watch?v=JpM95-Wplzo	(37:00).
+
+Tools:
+BloomRPC
+WireShark
+
+Learning Resource:
+gRPC docs - https://docs.microsoft.com/aspnet/core/grpc
+	gRPC with ASP.NET Core authentication
+	Logging and diagnostics
+	HttpClientFactory integration
+gRPC for WCF Developers
+	https://docs.microsoft.com/dotnet/architecture
+
+
+
+Protobuf:
+Data serialization
+Language-neutral
+Platform-neutral
+Extensible
+Small
+Fast
+Simple
+
+
+Http/1.1 VS Http2
+https://www.thewebmaster.com/hosting/2015/dec/14/what-is-http2-and-how-does-it-compare-to-http1-1/
+1. It is binary (hard to read but fast, less error), instead of textual (easy to read but slow, more error)
+2. Server Pushing
+Http/1.1: 
+Send a request for http page, get response. 
+Send a request for css, get response.
+Send a request for javascript, get response.
+Http/2
+Send a request
+Response with http page, css, javascript with priority difference.
+3. Http/1.1 limited parallel requests. Http2 unlimited parallel requests.
+4. It uses header compression to reduce overhead
+
+
+Multiplexing connection
+bidirection streaming
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+  <ItemGroup>
+    <Protobuf Include="Protos\common.proto" AdditionalImportDirs="Protos">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Protobuf>
+    <Protobuf Include="Protos\tenant_config.proto" AdditionalImportDirs="Protos">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Protobuf>
+  </ItemGroup>
+
+
+In order to import common.proto, needs to add AdditionalImportDirs="Protos".
+import "common.proto";
