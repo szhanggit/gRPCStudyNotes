@@ -1,0 +1,8 @@
+Need to install C++ in local computer.
+D:\git\cmsandbox\components\manager-fmp_visualization\src\node_modules\grpc-tools\bin
+
+grpc_tools_node_protoc
+
+
+D:\git\cmsandbox\components\manager-fmp_visualization\src> npm run gen:proto-windows
+"grpc-tools": "^1.13.0",

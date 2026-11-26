@@ -1,0 +1,103 @@
+Here's a comprehensive guide to install Protocol Buffers compiler (protoc) on Windows 10:
+
+## Method 1: Using Pre-compiled Binary (Recommended)
+
+### Step 1: Download protoc
+1. Go to the [Protocol Buffers releases page](https://github.com/protocolbuffers/protobuf/releases)
+2. Download the latest version for Windows (e.g., `protoc-xx.x-win64.zip`)
+3. Look for files named like:
+   - `protoc-xx.x-win32.zip` (32-bit)
+   - `protoc-xx.x-win64.zip` (64-bit)
+
+### Step 2: Install protoc
+1. Extract the downloaded ZIP file
+2. Copy the `bin/protoc.exe` to a permanent location, for example:
+   - `C:\Program Files\protoc\`
+   - Or `C:\tools\protoc\`
+
+### Step 3: Add to PATH
+1. Press `Win + X` and select "System"
+2. Click "Advanced system settings"
+3. Click "Environment Variables"
+4. Under "System variables", find "Path" and click "Edit"
+5. Click "New" and add the path to your protoc directory
+   - Example: `C:\Program Files\protoc\bin`
+6. Click "OK" to save
+
+### Step 4: Verify Installation
+Open Command Prompt and run:
+```cmd
+protoc --version
+```
+You should see the version number.
+
+## Method 2: Using Package Managers
+
+### Using Chocolatey
+```cmd
+choco install protoc
+```
+
+### Using Scoop
+```cmd
+scoop install protoc
+```
+
+## Method 3: Using vcpkg
+```cmd
+vcpkg install protobuf
+```
+
+## Verification Test
+
+Create a simple test to verify everything works:
+
+1. Create a file `test.proto`:
+```proto
+syntax = "proto3";
+
+message Test {
+    string message = 1;
+    int32 number = 2;
+}
+```
+
+2. Compile it:
+```cmd
+protoc --cpp_out=. test.proto
+```
+
+## Troubleshooting
+
+### Common Issues:
+
+1. **"protoc is not recognized"**
+   - Make sure the PATH is set correctly
+   - Restart your terminal after adding to PATH
+
+2. **Permission issues**
+   - Run Command Prompt as Administrator if needed
+
+3. **Version conflicts**
+   - Ensure you're using the correct architecture (32-bit vs 64-bit)
+
+### Additional Setup for Developers
+
+If you're using protoc with specific languages, you might need additional plugins:
+
+```cmd
+# For Go
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+
+# For Python
+pip install protobuf
+
+# For C#
+dotnet add package Google.Protobuf.Tools
+```
+
+The pre-compiled binary method (Method 1) is usually the simplest and most reliable approach for most users.
+
+
+
+https://github.com/protocolbuffers/protobuf/releases
